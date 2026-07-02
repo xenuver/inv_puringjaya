@@ -33,19 +33,21 @@ Pastikan semua file berikut sudah di-commit dan di-push ke repositori Git Anda (
    - Di dashboard Coolify untuk resource ini, masuk ke tab **Environment Variables**.
    - Masukkan variable penting dari Laravel Anda. Minimal yang harus ada:
      ```env
+     APP_NAME=Laravel
      APP_ENV=production
+     APP_KEY=base64:tHcomT0oBOkKjUzlr11LGpo3vko6yJAD2fBHgXEpBgk=
      APP_DEBUG=false
-     APP_KEY=base64:xxx... (isi dengan APP_KEY Anda yang valid)
-     APP_URL=https://domain-anda.com
+     APP_URL=https://rmpuringjaya.my.id
 
      DB_CONNECTION=mysql
      DB_HOST=db
      DB_PORT=3306
      DB_DATABASE=laravel_db
      DB_USERNAME=laravel_user
-     DB_PASSWORD=password_rahasia_anda
+     DB_PASSWORD=invsandi123
+     DB_ROOT_PASSWORD=invsandi123
      ```
-   - **Catatan tentang Database**: Karena MariaDB (di `docker-compose.yml`) menggunakan environment variables ini, pastikan Anda juga mengatur passwordnya. Anda dapat menyesuaikannya sesuai selera.
+   - **Catatan tentang Database**: Karena MariaDB (di `docker-compose.yml`) menggunakan environment variables ini, konfigurasi di atas sudah menyesuaikan password database Anda menjadi `invsandi123`.
 
 6. **Konfigurasi Domain**
    - Masuk ke tab **Configuration / General** di layanan `app`.
