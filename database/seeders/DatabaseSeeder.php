@@ -2834,7 +2834,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'sandy',
                 'email' => 'sandy@gmail.com',
                 'email_verified_at' => null,
-                'password' => 'sandy123',
+                'password' => bcrypt('sandy123'),
                 'role' => 'admin',
                 'remember_token' => null,
                 'created_at' => null,
