@@ -24,18 +24,31 @@ services:
       # Mount storage agar file upload tidak hilang ketika container di-restart
       - app-storage:/var/www/html/storage/app/public
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - coolify
 
   db:
     image: mariadb:10.4
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-laravel_db}
-      MYSQL_USER: ${DB_USERNAME:-laravel_user}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootsecret}
+      - MYSQL_DATABASE=${DB_DATABASE:-laravel_db}
+      - MYSQL_USER=${DB_USERNAME:-laravel_user}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-invsandi123}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-invsandi123}
     volumes:
       - db-data:/var/lib/mysql
+    networks:
+      - coolify
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+networks:
+  coolify:
 
 volumes:
   app-storage:
