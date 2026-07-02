@@ -15,5 +15,8 @@ php artisan migrate --force
 echo "Menjalankan seeder (akan insert jika tabel kosong)..."
 php artisan db:seed --force
 
-echo "Menjalankan web server..."
+echo "Mengoptimalkan performa Laravel..."
+php artisan optimize
+
+echo "Memulai server Apache..."
 exec "$@"

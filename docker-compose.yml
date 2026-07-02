@@ -31,7 +31,6 @@ services:
 
   db:
     image: mariadb:10.4
-    command: --skip-name-resolve
     restart: unless-stopped
     environment:
       - MYSQL_DATABASE=${DB_DATABASE:-laravel_db}
@@ -43,7 +42,7 @@ services:
     networks:
       - coolify
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
       interval: 5s
       timeout: 5s
       retries: 10
