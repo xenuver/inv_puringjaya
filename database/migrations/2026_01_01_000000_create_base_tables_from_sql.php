@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -166,6 +167,270 @@ return new class extends Migration
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;');
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `cabang`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_expiration_index` (`expiration`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_locks_expiration_index` (`expiration`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `permintaan`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `permintaandetail`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokcabang`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokgudang`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokkeluar`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokkeluardetail`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokmasuk`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `stokmasukdetail`
+  ADD PRIMARY KEY (`id`);'); } catch (\Exception $e) {}
+
+        // Add Primary Key
+        try { DB::unprepared('ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cabang`
+--
+ALTER TABLE `cabang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cache`
+--
+ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_expiration_index` (`expiration`);
+
+--
+-- Indexes for table `cache_locks`
+--
+ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`),
+  ADD KEY `cache_locks_expiration_index` (`expiration`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
+-- Indexes for table `job_batches`
+--
+ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `permintaan`
+--
+ALTER TABLE `permintaan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `permintaandetail`
+--
+ALTER TABLE `permintaandetail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `stokcabang`
+--
+ALTER TABLE `stokcabang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stokgudang`
+--
+ALTER TABLE `stokgudang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stokkeluar`
+--
+ALTER TABLE `stokkeluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stokkeluardetail`
+--
+ALTER TABLE `stokkeluardetail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stokmasuk`
+--
+ALTER TABLE `stokmasuk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `stokmasukdetail`
+--
+ALTER TABLE `stokmasukdetail`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `cabang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `permintaan`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `permintaandetail`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokcabang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokgudang`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokkeluar`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokkeluardetail`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokmasuk`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `stokmasukdetail`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;'); } catch (\Exception $e) {}
+
+        // Add Auto Increment
+        try { DB::unprepared('ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;'); } catch (\Exception $e) {}
 
     }
 
