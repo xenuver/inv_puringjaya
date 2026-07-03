@@ -901,7 +901,7 @@ class PanelController extends Controller
 
     public function cetakStokMasukPdf(Request $request)
     {
-        $query = \App\Models\StokMasukModel::with(['stokmasukdetail.stokgudang.barang']);
+        $query = \App\Models\StokmasukModel::with(['stokmasukdetail.stokgudang.barang']);
 
         if ($request->filled('tgl_mulai') && $request->filled('tgl_selesai')) {
             $query->whereBetween('created_at', [
